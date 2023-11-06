@@ -1,6 +1,6 @@
 # Fragrance Gate 🧴🌬️✨🌸
 
-> **Fragrance Gate** adalah sebuah aplikasi mobile untuk mengelola penyimpanan *niche*, *designer*, *dupes*, atau bahkan lokal *perfume*.
+> **Fragrance Gate** adalah sebuah aplikasi mobile untuk mengelola penyimpanan *niche*, *designer*, *dupes*, atau bahkan lokal *perfume* anda.
 
 ### Daftar Tugas:
 - **[Tugas 7](#tugas-7)**<br>
@@ -27,31 +27,31 @@ Kesimpulannya, Stateless Widget digunakan untuk membuat komponen yang statis dan
 <img width="969" alt="SJURB" src="https://github.com/yhogaa/FragranceGate/assets/113284837/f76d4c23-398d-412e-a3bf-974c11e8f03a">
 
 ## **_Widget_ yang digunakan**
-**MyHomePage**: Ini adalah widget utama yang merupakan halaman beranda dari aplikasi. Ini adalah widget Stateless (tidak memiliki keadaan internal) yang akan menggambarkan tampilan beranda aplikasi.
+1. **MyHomePage**: Ini adalah widget utama yang merupakan halaman beranda dari aplikasi. Ini adalah widget Stateless (tidak memiliki keadaan internal) yang akan menggambarkan tampilan beranda aplikasi.
 
-**Scaffold**: Ini adalah kerangka utama yang digunakan untuk menyusun berbagai elemen tampilan seperti AppBar dan body dalam satu tampilan. Ini memberikan kerangka umum untuk halaman.
+2. **Scaffold**: Ini adalah kerangka utama yang digunakan untuk menyusun berbagai elemen tampilan seperti AppBar dan body dalam satu tampilan. Ini memberikan kerangka umum untuk halaman.
 
-**AppBar**: Widget ini digunakan untuk membuat bagian atas pada aplikasi yang berisi judul aplikasi dan tata letaknya.
+3. **AppBar**: Widget ini digunakan untuk membuat bagian atas pada aplikasi yang berisi judul aplikasi dan tata letaknya.
 
-**SingleChildScrollView**: Widget ini digunakan sebagai pembungkus untuk memungkinkan kontennya dapat discroll. Ini berguna ketika konten dalam halaman terlalu panjang untuk muat pada layar.
+4. **SingleChildScrollView**: Widget ini digunakan sebagai pembungkus untuk memungkinkan kontennya dapat discroll. Ini berguna ketika konten dalam halaman terlalu panjang untuk muat pada layar.
 
-**Padding**: Widget ini digunakan untuk menambahkan jarak (padding) di sekitar widget-child yang ada di dalamnya.
+5. **Padding**: Widget ini digunakan untuk menambahkan jarak (padding) di sekitar widget-child yang ada di dalamnya.
 
-**Column**: Widget ini digunakan untuk menampilkan widget-child secara vertikal. 
+6. **Column**: Widget ini digunakan untuk menampilkan widget-child secara vertikal. 
 
-**Text**: Ini digunakan untuk menampilkan teks dalam aplikasi.
+7. **Text**: Ini digunakan untuk menampilkan teks dalam aplikasi.
 
-**GridView.count**: Ini adalah widget yang digunakan untuk menampilkan grid dengan jumlah kolom tetap. Dalam hal ini, grid ini digunakan untuk menampilkan daftar item toko.
+8. **GridView.count**: Ini adalah widget yang digunakan untuk menampilkan grid dengan jumlah kolom tetap. Dalam hal ini, grid ini digunakan untuk menampilkan daftar item toko.
 
-**ShopCard**: Custom widget. Ini digunakan untuk menampilkan setiap item toko dalam bentuk card. Widget ini memiliki ikon dan teks, serta memberikan umpan balik saat ditekan.
+9. **ShopCard**: Custom widget. Ini digunakan untuk menampilkan setiap item toko dalam bentuk card. Widget ini memiliki ikon dan teks, serta memberikan umpan balik saat ditekan.
 
-**Material**: Ini adalah widget yang memberikan latar belakang berwarna pada setiap ShopCard.
+10. **Material**: Ini adalah widget yang memberikan latar belakang berwarna pada setiap ShopCard.
 
-**InkWell**: Ini adalah widget yang digunakan untuk membuat area yang responsif terhadap sentuhan. Ini digunakan untuk menangani interaksi saat pengguna mengklik ShopCard.
+11. **InkWell**: Ini adalah widget yang digunakan untuk membuat area yang responsif terhadap sentuhan. Ini digunakan untuk menangani interaksi saat pengguna mengklik ShopCard.
 
-**Icon**: Ini digunakan untuk menampilkan ikon di dalam ShopCard.
+12. **Icon**: Ini digunakan untuk menampilkan ikon di dalam ShopCard.
 
-**SnackBar**: Widget yang menampilkan pesan sementara yang muncul di bagian bawah layar ketika item di klik.
+13. **SnackBar**: Widget yang menampilkan pesan sementara yang muncul di bagian bawah layar ketika item di klik.
 
 ## **Implementasi Aplikasi**
 * ## Membuat proyek flutter baru
@@ -151,7 +151,7 @@ class FragranceCard extends StatelessWidget {
 }
 ```
 
-4. Untuk menampilkannya, pada `class MyHomePage` tambahkann kode berikut.
+4. Untuk menampilkannya, pada `class MyHomePage` tambahkan kode berikut.
 ```dart
 class MyHomePage extends StatelessWidget  {
   ...
