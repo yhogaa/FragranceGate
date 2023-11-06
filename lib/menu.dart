@@ -4,9 +4,9 @@ class MyHomePage extends StatelessWidget  {
   MyHomePage({Key? key}) : super(key: key);
 
   final List<FragranceItem> items = [
-      FragranceItem("Lihat Parfum", Icons.checklist),
-      FragranceItem("Tambah Parfum", Icons.add_shopping_cart),
-      FragranceItem("Logout", Icons.logout),
+      FragranceItem("Lihat Parfum", Icons.checklist, Colors.yellow),
+      FragranceItem("Tambah Parfum", Icons.add_shopping_cart, Colors.green),
+      FragranceItem("Logout", Icons.logout, Colors.red),
   ];
 
   // This widget is the home page of your application. It is stateful, meaning
@@ -72,8 +72,9 @@ class MyHomePage extends StatelessWidget  {
 class FragranceItem {
     final String name;
     final IconData icon;
+    final Color color;
 
-    FragranceItem(this.name, this.icon);
+    FragranceItem(this.name, this.icon, this.color);
 }
 
 class FragranceCard extends StatelessWidget {
@@ -84,7 +85,7 @@ class FragranceCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.indigo,
+      color: item.color,
       child: InkWell(
         // Area responsive terhadap sentuhan
         onTap: () {
