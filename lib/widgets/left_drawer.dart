@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:inventory_flutter/screens/fragrancelist_page.dart';
 import 'package:inventory_flutter/screens/menu.dart';
 import 'package:inventory_flutter/screens/fragrancelist_form.dart';
 
@@ -58,6 +59,18 @@ class LeftDrawer extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => const FragranceFormPage(),
+                  ));
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.checklist),
+            title: const Text('Lihat Parfum'),
+            // Bagian redirection ke FragranceFormPage
+            onTap: () {
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => FragranceListPage(fragranceList: fragranceList),
                   ));
             },
           )

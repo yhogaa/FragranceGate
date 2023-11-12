@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inventory_flutter/screens/fragrancelist_form.dart';
+import 'package:inventory_flutter/screens/fragrancelist_page.dart';
 
 class FragranceItem {
     final String name;
@@ -31,6 +32,11 @@ class FragranceCard extends StatelessWidget {
           if (item.name == "Tambah Parfum") {
             Navigator.push(context,
               MaterialPageRoute(builder: (context) => const FragranceFormPage()));
+          }
+
+          if (item.name == "Lihat Parfum") {
+            Navigator.push(context,
+              MaterialPageRoute(builder: (context) => FragranceListPage(fragranceList: fragranceList)));
           }
         
         },
