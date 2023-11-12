@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:inventory_flutter/widgets/fragrance_card.dart';
+import 'package:inventory_flutter/widgets/left_drawer.dart';
 
 class MyHomePage extends StatelessWidget  {
   MyHomePage({Key? key}) : super(key: key);
@@ -21,12 +23,13 @@ class MyHomePage extends StatelessWidget  {
     Widget build(BuildContext context) {
         return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.indigo,
         title: const Text(
           'FragranceGate',
-          style: TextStyle(color: Colors.white),
         ),
+        backgroundColor: Colors.indigo,
+        foregroundColor: Colors.white,
       ),
+      drawer: const LeftDrawer(),
       body: SingleChildScrollView(
         // Widget wrapper yang dapat discroll
         child: Padding(
@@ -67,57 +70,4 @@ class MyHomePage extends StatelessWidget  {
     );
     }
   
-}
-
-class FragranceItem {
-    final String name;
-    final IconData icon;
-    final Color color;
-
-    FragranceItem(this.name, this.icon, this.color);
-}
-
-class FragranceCard extends StatelessWidget {
-  final FragranceItem item;
-
-  const FragranceCard(this.item, {super.key}); // Constructor
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      color: item.color,
-      child: InkWell(
-        // Area responsive terhadap sentuhan
-        onTap: () {
-          // Memunculkan SnackBar ketika diklik
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(SnackBar(
-                content: Text("Kamu telah menekan tombol ${item.name}!")));
-        },
-        child: Container(
-          // Container untuk menyimpan Icon dan Text
-          padding: const EdgeInsets.all(8),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  item.icon,
-                  color: Colors.white,
-                  size: 30.0,
-                ),
-                const Padding(padding: EdgeInsets.all(3)),
-                Text(
-                  item.name,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(color: Colors.white),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
 }
