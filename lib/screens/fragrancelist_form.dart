@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:inventory_flutter/models/fragrance_models.dart';
 import 'package:inventory_flutter/widgets/left_drawer.dart';
+
+List<Fragrance> fragranceList = [];
 
 class FragranceFormPage extends StatefulWidget {
     const FragranceFormPage({super.key});
@@ -157,6 +160,14 @@ class _FragranceFormPageState extends State<FragranceFormPage> {
                           ),
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
+                              // Tambahkan fragrance ke daftar
+                              Fragrance newFragrance = Fragrance(
+                                name: _name,
+                                amount: _amount,
+                                price: _price,
+                                description: _description,
+                              );
+                              fragranceList.add(newFragrance);
                               showDialog(
                                 context: context,
                                 builder: (context) {
@@ -197,7 +208,6 @@ class _FragranceFormPageState extends State<FragranceFormPage> {
                     ),
                   )
                 ]
-
               )
             ),
           ),
