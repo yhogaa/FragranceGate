@@ -196,8 +196,8 @@ class _FragranceFormPageState extends State<FragranceFormPage> {
                                   );
                                 },
                               );
-                            }
                             _formKey.currentState!.reset();
+                            }
                           },
                           child: const Text(
                             "Save",
