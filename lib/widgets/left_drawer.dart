@@ -63,17 +63,16 @@ class LeftDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.checklist),
-            title: const Text('Lihat Parfum'),
-            // Bagian redirection ke FragranceFormPage
+            leading: const Icon(Icons.shopping_basket),
+            title: const Text('Daftar Parfum'),
             onTap: () {
-              Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => FragranceListPage(fragranceList: fragranceList),
-                  ));
+                // Route menu ke halaman parfum
+                Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const PerfumePage()),
+                );
             },
-          )
+        ),
         ],
       ),
     );

@@ -5,6 +5,7 @@
 ### Daftar Tugas:
 - **[Tugas 7](#tugas-7)**<br>
 - **[Tugas 8](#tugas-8)**<br>
+- **[Tugas 9](#tugas-9)**<br>
 
 # Tugas 7
 ## **_Stateless_ dan _stateful widget_**
@@ -612,3 +613,49 @@ return Scaffold(
   drawer: const LeftDrawer(),
 ...
 ```
+
+# Tugas 7
+## **Pengambilan data JSON**
+**Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu?** Jawabannya bisa, kita bisa melakukan pengambilan data JSON tanpa membuat model terlebih dahulu. Namun, apakah hal tersebut lebih baik daripada membuat model terlebih dahulu tergantung pada kebutuhan dan kompleksitas data yang akan diambil. Jika data yang diambil sederhana dan tidak memerlukan banyak manipulasi, maka pengambilan data JSON tanpa membuat model terlebih dahulu dapat dilakukan. Namun, jika data yang diambil kompleks dan memerlukan banyak manipulasi, maka lebih baik membuat model terlebih dahulu agar memudahkan pengambilan dan manipulasi data.
+## **`CookieRequest`**
+CookieRequest adalah sebuah instance yang digunakan untuk mengambil cookie dari sebuah request pada aplikasi Flutter. Fungsi dari CookieRequest adalah untuk melakukan permintaan HTTP yang menyertakan cookie, Menyediakan fungsi untuk inisialisasi sesi, login, dan logout ,  dll. Instance CookieRequest perlu dibagikan ke semua komponen di aplikasi Flutter agar dapat digunakan secara global pada seluruh komponen. Dengan begitu, kita dapat mengakses cookie yang sama pada seluruh komponen aplikasi tanpa perlu membuat instance baru setiap kali ingin mengambil cookie.
+## **Mekanisme Pengambilan Data JSON**
+1. Membuat model kustom, gunakan website [Quicktype](https://app.quicktype.io/) untuk membuat data JSON yang didapat dari endpoint `/json` pada tugas Django.
+2. Menambahkan dependensi HTTP dengan pada file `android/app/src/main/AndroidManifest.xml` tambahkan code berikut
+```xml
+<application>
+    ...
+    </application>
+    <!-- Required to fetch data from the Internet. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    ...
+```
+3. Lakukan fetc data dengan mengimplementasi fungsi asinkrosnus dan mengirim HTTP pada file yang ingin melakukan fetch, contohnya seperti code berikut.
+```dart
+Future<List<Perfume>> fetchPerfume() async {
+    var url = Uri.parse(
+        'https://fadrian-yhoga-tugas.pbp.cs.ui.ac.id/get-item/');
+    var response = await http.get(
+        url,
+        headers: {"Content-Type": "application/json"},
+    );
+
+    // melakukan decode response menjadi bentuk json
+    var data = jsonDecode(utf8.decode(response.bodyBytes));
+
+    // melakukan konversi data json menjadi object Perfume
+    List<Perfume> list_Perfume = [];
+    for (var d in data) {
+        if (d != null) {
+            list_Perfume.add(Perfume.fromJson(d));
+        }
+    }
+    return list_Perfume;
+}
+```
+
+## **Mekanisme autentikasi**
+
+## **Widget yang Digunakan**
+
+## **Implementasi Aplikasi**
