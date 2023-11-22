@@ -19,12 +19,7 @@ class _RegisterPageState extends State<RegisterPage> {
     final request = context.watch<CookieRequest>();
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Register',
-          style: TextStyle(color: Colors.white),
-        ),
-        backgroundColor: Colors.black,
-        foregroundColor: Colors.white,
+        title: const Text('Register'),
       ),
       body: Container(
         padding: const EdgeInsets.all(16.0),
@@ -61,8 +56,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 String password = _passwordController.text;
 
                 final response = await request.post(
-                    // "http://127.0.0.1:8000/auth/register/",
-                    "https://fadrian-yhoga-tugas.pbp.cs.ui.ac.id/auth/register/",
+                    "http://127.0.0.1:8000/auth/register/",
+                    // "https://fadrian-yhoga-tugas.pbp.cs.ui.ac.id/auth/register/",
                     {
                       'username': username,
                       'password': password,
