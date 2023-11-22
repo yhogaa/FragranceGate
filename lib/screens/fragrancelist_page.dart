@@ -15,7 +15,7 @@ class _PerfumePageState extends State<PerfumePage> {
 Future<List<Perfume>> fetchPerfume() async {
     // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
     var url = Uri.parse(
-        'https://fadrian-yhoga-tugas.pbp.cs.ui.ac.id/get-item/');
+        'https://fadrian-yhoga-tugas.pbp.cs.ui.ac.id/');
     var response = await http.get(
         url,
         headers: {"Content-Type": "application/json"},
