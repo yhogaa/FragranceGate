@@ -1,6 +1,6 @@
 import 'package:inventory_flutter/screens/menu.dart';
-import 'package:flutter/material.dart';
 import 'package:inventory_flutter/screens/register.dart';
+import 'package:flutter/material.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
 
@@ -28,6 +28,15 @@ class LoginPage extends StatefulWidget {
 
     @override
     _LoginPageState createState() => _LoginPageState();
+}
+
+User? loggedInUser;
+
+class User {
+  final String username;
+  final int id;
+
+  User(this.username, this.id);
 }
 
 class _LoginPageState extends State<LoginPage> {
@@ -66,14 +75,18 @@ class _LoginPageState extends State<LoginPage> {
                                 String username = _usernameController.text;
                                 String password = _passwordController.text;
 
-                                final response = await request.login("http://127.0.0.1:8000/auth/login/", {
+                                final response = await request.login(
+                                  "http://127.0.0.1:8000/auth/login/"
+                                  , {
                                 'username': username,
                                 'password': password,
                                 });
-                    
+
                                 if (request.loggedIn) {
                                     String message = response['message'];
+                                    int id = response['id'];
                                     String uname = response['username'];
+                                    loggedInUser = User(uname, id);
                                     Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(builder: (context) => MyHomePage()),
@@ -103,16 +116,16 @@ class _LoginPageState extends State<LoginPage> {
                             },
                             child: const Text('Login'),
                         ),
-                        const SizedBox(height: 24.0),
+                        const SizedBox(height: 12.0),
                         ElevatedButton(
-                            onPressed: () async {
-                                Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(builder: (context) => const RegisterPage()),
-                                );
-                            },
-                            child: const Text('Register'),
-                            )
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const RegisterPage()),
+                            );
+                          },
+                          child: const Text('Register'),
+                        )
                     ],
                 ),
             ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:inventory_flutter/models/perfume.dart';
+import 'package:inventory_flutter/screens/login.dart';
 import 'package:inventory_flutter/widgets/left_drawer.dart';
 
 class PerfumePage extends StatefulWidget {
@@ -15,7 +16,7 @@ class _PerfumePageState extends State<PerfumePage> {
 Future<List<Perfume>> fetchPerfume() async {
     // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
     var url = Uri.parse(
-        'https://fadrian-yhoga-tugas.pbp.cs.ui.ac.id/');
+        'http://127.0.0.1:8000/json/');
     var response = await http.get(
         url,
         headers: {"Content-Type": "application/json"},
@@ -28,7 +29,10 @@ Future<List<Perfume>> fetchPerfume() async {
     List<Perfume> list_Perfume = [];
     for (var d in data) {
         if (d != null) {
-            list_Perfume.add(Perfume.fromJson(d));
+            Perfume perfume = Perfume.fromJson(d);
+            if(perfume.fields.user == loggedInUser?.id){
+              list_Perfume.add(perfume);
+            }
         }
     }
     return list_Perfume;
@@ -44,21 +48,34 @@ Widget build(BuildContext context) {
         body: FutureBuilder(
             future: fetchPerfume(),
             builder: (context, AsyncSnapshot snapshot) {
-                if (snapshot.data == null) {
+                if (!snapshot.hasData) {
                     return const Center(child: CircularProgressIndicator());
                 } else {
-                    if (!snapshot.hasData) {
-                    return const Column(
-                        children: [
-                        Text(
-                            "Tidak ada data produk.",
-                            style:
-                                TextStyle(color: Color(0xff59A5D8), fontSize: 20),
+                    if (snapshot.data == null || snapshot.data!.isEmpty) {
+                        return const Center(
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                                Icon(
+                                    Icons.warning,
+                                    color: Color.fromARGB(255, 255, 0, 0),
+                                    size: 50,
+                                ),
+                                SizedBox(height: 16),
+                                Text(
+                                    "Tidak ada data parfum.",
+                                    style: TextStyle(color: Color.fromARGB(255, 255, 0, 0), fontSize: 24, fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(height: 8),
+                                Text(
+                                    "Silakan tambahkan parfum dan nanti akan muncul disini.",
+                                    style: TextStyle(color: Colors.grey, fontSize: 16),
+                                    textAlign: TextAlign.center,
+                                ),
+                            ],
                         ),
-                        SizedBox(height: 8),
-                        ],
                     );
-                } else {
+                    } else {
                     return ListView.builder(
                       itemCount: snapshot.data!.length,
                       itemBuilder: (context, index) {
